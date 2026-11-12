@@ -1,0 +1,78 @@
+% !TEX root = thesis.tex
+% Fill in these fields. Both the cover and PDF metadata use them.
+% Japanese fields are rendered using CJKutf8 and the ipxm font family.
+\newcommand{\ThesisTitleEN}{OOOO}
+\newcommand{\ThesisTitleJA}{OOOO}
+\newcommand{\ThesisAuthorEN}{OOOO}
+\newcommand{\ThesisAuthorJA}{OOOO}
+\newcommand{\ThesisDepartmentEN}{OOOO}
+\newcommand{\ThesisUniversityEN}{OOOO}
+\newcommand{\ThesisAffiliationJA}{OOOO}
+\newcommand{\ThesisDegree}{OOOO}
+\newcommand{\ThesisDateEN}{OOOO}
+\newcommand{\ThesisSubmissionJA}{OOOO}
+
+\title{\ThesisTitleEN}
+\author{\ThesisAuthorEN}
+\dept{\ThesisDepartmentEN}
+\university{\ThesisUniversityEN}
+\degreetitle{\ThesisDegree}
+\degreedate{\ThesisDateEN}
+\subject{OOOO}
+\keywords{OOOO}
+\supervisorlinewidth{0.35\textwidth}
+% Optional fields for the class's standard cover:
+% \supervisor{OOOO}
+% \advisor{OOOO}
+% \crest{\includegraphics[width=0.2\textwidth]{Figs/crest}}
+
+% The cover layout retains the original dimensions and type sizes.
+\renewcommand{\maketitle}{%
+  \newgeometry{left=27mm,right=27mm,top=25mm,bottom=25mm,bindingoffset=0mm}
+  \begingroup
+  \nolinenumbers
+  \thispagestyle{empty}
+  \setstretch{1}
+  \setlength{\parindent}{0pt}
+  \begin{CJK}{UTF8}{ipxm}
+  \begin{center}
+  \vspace*{5mm}
+  {\fontsize{24}{28}\selectfont Doctoral Dissertation\\
+  博士論文\par}
+
+  \vspace{20mm}
+  {\fontsize{22}{24}\selectfont\bfseries
+  \ThesisTitleEN\par}
+
+  \vspace{7mm}
+  {\fontsize{14.5}{19}\selectfont
+  \(\left(
+  \begin{minipage}{0.92\textwidth}
+  \centering
+  \ThesisTitleJA\par
+  \end{minipage}
+  \right)\)\par}
+
+  \vfill
+  {\fontsize{16}{18}\selectfont
+  A Dissertation Submitted for the Degree of \ThesisDegree\\[1mm]
+  \ThesisDateEN\\[2mm]
+  \ThesisSubmissionJA\par}
+
+  \vspace{18mm}
+  {\fontsize{16}{18}\selectfont
+  \ThesisDepartmentEN\\
+  \ThesisUniversityEN\\[2mm]
+  \ThesisAffiliationJA\par}
+
+  \vspace{16mm}
+  {\fontsize{16}{21}\selectfont
+  \ThesisAuthorEN\\[1mm]
+  \ThesisAuthorJA\par}
+  \vspace*{7mm}
+  \end{center}
+  \end{CJK}
+  \clearpage
+  \endgroup
+  \restoregeometry
+}
