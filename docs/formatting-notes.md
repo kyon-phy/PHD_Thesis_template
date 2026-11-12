@@ -5,13 +5,16 @@
 ## 内容占位与源文件路径
 
 ```tex
-\chapter{OOOO}
-\section{OOOO}
-\subsection{OOOO}
+\chapter{Introduction}
+\section{The Standard Model}
+\subsection{Particle content and gauge group of the SM}
 \caption[OOOO]{OOOO}
 ```
 
-章节标题和正文改为 `OOOO`。标题命令继续产生章节编号、目录条目和页眉。
+chapter、section、subsection、subsubsection 和 paragraph 的原始标题与层级保留，
+包括附录中的标题。正文仍为 `OOOO`。上面的三条标题命令是分别取自现有文件的示例。
+标题命令按原来的参数产生章节编号、目录条目和页眉，星号与可选短标题也照原文保留。
+Chapter 6 的 `\input` 顺序与原论文一致，通用编号文件名保持不变。
 `\caption[短标题]{完整标题}` 的两个参数均已占位，分别显示在图表目录和图表下方。
 原研究专用的段落、公式、图表和图像路径已移除，Chapter 1 保留独立的格式示例。
 
@@ -107,8 +110,25 @@
 
 ## 导言区与参考文献
 
-研究专用的 `\newcommand` 定义已移除，使用者可在
-`Preamble/preamble.tex` 的自定义命令区填写自己的符号。
+仅保留原标题所需的九个记号定义，使用者可在
+`Preamble/preamble.tex` 的自定义命令区填写自己的其他符号。
+
+```tex
+\newcommand*{\hadtau}{\ensuremath{\tau_{\mathrm{had}}}\xspace}
+\newcommand*{\wjets}{\ensuremath{W+\mathrm{jets}}\xspace}
+\newcommand{\bTagSR}{\ensuremath{\mathrm{SR1b}}\xspace}
+\newcommand{\bVetoSR}{\ensuremath{\mathrm{SR0b}}\xspace}
+\newcommand{\CRTop}{\ensuremath{\mathrm{CRTop}}\xspace}
+\newcommand{\VRW}{\ensuremath{\mathrm{VRW}}\xspace}
+\newcommand{\VRTop}{\ensuremath{\mathrm{VRTop}}\xspace}
+\newcommand{\Res}{\ensuremath{\mathrm{Res}}\xspace}
+\newcommand{\NonRes}{\ensuremath{\mathrm{NonRes}}\xspace}
+```
+
+这些命令保留标题中的物理记号：`\hadtau` 表示带 had 下标的 tau，
+`\wjets` 表示 W+jets，其余命令输出 SR1b、SR0b、CRTop、VRW、VRTop、Res 和 NonRes。
+`\ensuremath` 让记号在正文和数学模式下均可使用，`\mathrm` 保持标识符为正体，
+`\xspace` 在适当位置补空格。它们不包含原论文的数值或正文。
 移除了未被占位模板使用的 `\usepackage{tikz-feynman}`，因此默认编译无需该宏包。
 原字体配置、数学花体、`CJKutf8`、目录深度、图目录编号栏宽及参考文献回链保留。
 
