@@ -1,8 +1,8 @@
-# 模板整理中的命令说明
+# Template formatting and build commands
 
-所有改动均发生在独立模板副本中。以下示例中的尖括号是说明文字，不代表原论文内容。
+All changes described here apply only to the independent template copy.
 
-## 内容占位与源文件路径
+## Placeholder content and source paths
 
 ```tex
 \chapter{Introduction}
@@ -11,12 +11,21 @@
 \caption[OOOO]{OOOO}
 ```
 
-chapter、section、subsection、subsubsection 和 paragraph 的原始标题与层级保留，
-包括附录中的标题。正文仍为 `OOOO`。上面的三条标题命令是分别取自现有文件的示例。
-标题命令按原来的参数产生章节编号、目录条目和页眉，星号与可选短标题也照原文保留。
-Chapter 6 的 `\input` 顺序与原论文一致，通用编号文件名保持不变。
-`\caption[短标题]{完整标题}` 的两个参数均已占位，分别显示在图表目录和图表下方。
-原研究专用的段落、公式、图表和图像路径已移除，Chapter 1 保留独立的格式示例。
+The original chapter, section, subsection, subsubsection, and paragraph headings
+and their hierarchy are retained, including appendix headings. The body text
+remains `OOOO`. The three heading commands above are examples taken from
+different source files.
+
+Heading commands retain their original arguments, starred forms, and optional
+short titles. They control numbering, contents entries, and page headers.
+Chapter 6 retains the original `\input` order while using the generic numbered
+filenames.
+
+Both arguments of `\caption[short caption]{full caption}` contain placeholders.
+The optional argument appears in the list of figures or tables, and the
+mandatory argument provides the caption displayed with the figure or table.
+The original research paragraphs, equations, figures, tables, and image paths
+have been removed. Chapter 1 contains independent formatting examples.
 
 ```tex
 \include{Chapters/CH1}
@@ -26,12 +35,16 @@ Chapter 6 的 `\input` 顺序与原论文一致，通用编号文件名保持不
 \includeonly{Chapters/CH1}
 ```
 
-原来含研究主题的文件名改为通用编号，并同步修改 `\include` / `\input`。
-`\include` 仍用于按章分页，`\input` 仍在当前位置插入子文件。
-`\includeonly` 修复为实际存在的第一章路径，只在启用 `chapter` 文档类选项时生效。
-`\label` / `\ref` / `\cite` 的键也改为通用示例键，保留交叉引用功能。
+Filenames containing research topics were replaced with generic numbered names,
+and the corresponding `\include` and `\input` paths were updated.
+`\include` continues to insert chapter boundaries, while `\input` inserts a
+source file at the current position.
+`\includeonly` now points to the existing Chapter 1 file. This setting takes
+effect when the `chapter` document class option is enabled.
+The keys used by `\label`, `\ref`, and `\cite` were also replaced with generic
+example keys, preserving cross-reference functionality.
 
-## 封面和元数据
+## Title page and metadata
 
 ```tex
 \newcommand{\ThesisTitleEN}{OOOO}
@@ -54,11 +67,13 @@ Chapter 6 的 `\input` 顺序与原论文一致，通用编号文件名保持不
 \keywords{OOOO}
 ```
 
-新增十个字段命令集中存放可填写信息。封面中原来的固定文本改为相应字段，
-`\title` 和 `\author` 同时为 PDF 元数据提供内容，避免封面与 PDF 信息不一致。
-英文标题内原来针对某一题目的手动换行 `\\` 已移除，新标题按可用宽度自然换行。
+Ten field commands store the information to fill in. They replace the fixed
+text on the title page. `\title` and `\author` also supply the PDF metadata,
+keeping it consistent with the title page.
+The manual `\\` line breaks tailored to the original English title were removed.
+A replacement title wraps naturally within the available width.
 
-封面的以下尺寸命令保持原值：
+The following title page settings retain their original values:
 
 ```tex
 \newgeometry{left=27mm,right=27mm,top=25mm,bottom=25mm,bindingoffset=0mm}
@@ -74,22 +89,30 @@ Chapter 6 的 `\input` 顺序与原论文一致，通用编号文件名保持不
 \restoregeometry
 ```
 
-页边距依次为左右 27 mm、上下 25 mm，封面不额外增加装订偏移。
-单倍行距和零首行缩进用于居中封面。
-`CJK` 使用 UTF-8 输入及 `ipxm` 日文字体族。
-`\fontsize{字号}{基线距离}` 分别保留原封面各区域的字号和行高，
-日文题目区域保留为正文宽度的 92%。原来的 `\vspace` / `\vfill` 间距命令也保留。
-`\restoregeometry` 在封面后恢复正文页边距。短占位标题比真实题目占用的行数少。
+The left and right margins are 27 mm, and the top and bottom margins are 25 mm.
+No additional binding offset is applied to the title page. Single line spacing
+and zero paragraph indentation are used for its centred content.
 
-## 占位图、表和公式
+`CJK` uses UTF-8 input and the `ipxm` Japanese font family.
+`\fontsize{font size}{baseline skip}` retains the original font size and line
+spacing for each part of the title page. The Japanese title area remains 92%
+of the text width. The original `\vspace` and `\vfill` spacing commands are
+also retained.
+`\restoregeometry` restores the body margins after the title page.
+A short placeholder title occupies fewer lines than a complete thesis title.
+
+## Placeholder figures, tables, and equations
 
 ```tex
 \fbox{\parbox[c][45mm][c]{0.72\linewidth}{\centering OOOO}}
 ```
 
-`\fbox` 绘制边框。`\parbox` 的两个 `c` 参数分别控制盒子对外和内部的垂直居中，
-盒子高 45 mm、宽为当前行宽的 72%，内部文字水平居中。
-该占位图不需要图片资源，可用 `\includegraphics[width=...]{...}` 替换。
+`\fbox` draws a border. The two `c` arguments of `\parbox` specify the vertical
+alignment of the box relative to its surroundings and the vertical alignment
+of its contents, respectively. The box is 45 mm high and 72% of the current
+line width. Its text is centred horizontally.
+This placeholder requires no image file. Replace it with
+`\includegraphics[width=...]{...}` when adding a real figure.
 
 ```tex
 \begin{figure}[tbp]
@@ -103,15 +126,19 @@ Chapter 6 的 `\input` 顺序与原论文一致，通用编号文件名保持不
 \end{equation}
 ```
 
-`[tbp]` 允许图表浮动至页顶、页底或浮动页；`{ll}` 创建两列左对齐表格。
-`booktabs` 的三个命令绘制表头上方、下方及表尾的横线。
-`equation` 为占位公式自动编号，`\mathrm` 将占位字符显示为正体。
-这些示例通过 `\label` / `\ref` 检查编号和引用，不含研究结果。
+`[tbp]` allows figures and tables to float to the top or bottom of a page, or to
+a page of floats. `{ll}` creates two columns aligned to the left.
+The three `booktabs` commands draw rules above the header, below the header,
+and at the bottom of the table.
+`equation` numbers the placeholder equation automatically, and `\mathrm`
+renders its placeholder characters upright.
+These examples use `\label` and `\ref` to demonstrate numbering and references.
+They contain no research results.
 
-## 导言区与参考文献
+## Preamble and bibliography
 
-仅保留原标题所需的九个记号定义，使用者可在
-`Preamble/preamble.tex` 的自定义命令区填写自己的其他符号。
+Only the nine notation commands required by the original headings are retained.
+Add other notation in the custom commands section of `Preamble/preamble.tex`.
 
 ```tex
 \newcommand*{\hadtau}{\ensuremath{\tau_{\mathrm{had}}}\xspace}
@@ -125,21 +152,29 @@ Chapter 6 的 `\input` 顺序与原论文一致，通用编号文件名保持不
 \newcommand{\NonRes}{\ensuremath{\mathrm{NonRes}}\xspace}
 ```
 
-这些命令保留标题中的物理记号：`\hadtau` 表示带 had 下标的 tau，
-`\wjets` 表示 W+jets，其余命令输出 SR1b、SR0b、CRTop、VRW、VRTop、Res 和 NonRes。
-`\ensuremath` 让记号在正文和数学模式下均可使用，`\mathrm` 保持标识符为正体，
-`\xspace` 在适当位置补空格。它们不包含原论文的数值或正文。
-移除了未被占位模板使用的 `\usepackage{tikz-feynman}`，因此默认编译无需该宏包。
-原字体配置、数学花体、`CJKutf8`、目录深度、图目录编号栏宽及参考文献回链保留。
+These commands preserve the physics notation used in headings. `\hadtau`
+produces tau with a had subscript, and `\wjets` produces W+jets. The remaining
+commands produce SR1b, SR0b, CRTop, VRW, VRTop, Res, and NonRes.
+`\ensuremath` allows the notation to be used in both text and maths mode,
+`\mathrm` keeps identifiers upright, and `\xspace` inserts a space where
+appropriate. These definitions contain no numerical results or thesis prose.
+
+The unused `\usepackage{tikz-feynman}` was removed, so the default build does
+not require that package. The original font settings, calligraphic maths font,
+`CJKutf8`, contents depth, number-column width in the list of figures, and
+bibliography links back to citation pages are retained.
 
 ```tex
 \documentclass[a4paper,12pt,times,print,index,custombib]{Classes/PhDThesisPSnPDF}
 ```
 
-移除与 `custombib` 重复的 `numbered` 选项，避免文档类发出参考文献选项冲突警告。
-数字引用仍由导言区的 `\RequirePackage[square, sort&compress, numbers]{natbib}`
-设置：方括号、排序并压缩连续编号。其余选项继续选择 A4、12 pt、Times 字体、
-打印页边距、索引支持和自定义参考文献配置，显示效果不变。
+The redundant `numbered` option was removed to avoid a conflict warning with
+`custombib`. Numbered citations are still configured by
+`\RequirePackage[square, sort&compress, numbers]{natbib}` in the preamble.
+This selects square brackets and sorts citation numbers, compressing consecutive
+numbers into ranges. The remaining class options continue to select A4 paper,
+12 pt type, Times fonts, print margins, index support, and custom bibliography
+settings, with the same displayed formatting.
 
 ```tex
 \bibliographystyle{References/thesis-unsrtnat}
@@ -147,25 +182,36 @@ Chapter 6 的 `\input` 顺序与原论文一致，通用编号文件名保持不
 \cite{placeholder-one,placeholder-two,placeholder-three}
 ```
 
-前两个命令及本地 `.bst` 样式保留。`.bib` 正文替换为三条明确标为占位的条目，
-演示按首次引用顺序编号、数字压缩及返回引用页的链接。
+The first two commands and the local `.bst` style are retained.
+The `.bib` contents were replaced with three clearly marked placeholder entries.
+They demonstrate numbering in order of first citation, compressed citation
+numbers, and links back to citation pages.
 
-## 构建命令
+## Build commands
 
-新增 `.latexmkrc`：`$pdf_mode = 1` 使用 pdfLaTeX，`$out_dir = 'build'`
-集中存放生成文件，`@default_files = ('thesis.tex')` 指定默认入口。
-`-interaction=nonstopmode` 避免交互停顿，`-halt-on-error` 在错误时退出。
-使用标准 TeX 错误格式，让 latexmk 能识别并自动创建 `\include` 所需的辅助文件子目录。
-`add_cus_dep('nlo', 'nls', 0, ...)`
-为后续添加术语表时注册 makeindex 规则；`-s nomencl.ist` 指定术语表样式，
-`-o` 指定输出文件。
-`$max_repeat = 10` 将单次构建最多允许的 LaTeX 轮数设为 10，以便首次编译时
-子文件、目录和参考文献回链完成收敛；文件稳定后 latexmk 即停止重编译。
+The added `.latexmkrc` uses `$pdf_mode = 1` to select pdfLaTeX,
+`$out_dir = 'build'` to collect generated files in one directory, and
+`@default_files = ('thesis.tex')` to set the default main file.
+`-interaction=nonstopmode` avoids interactive prompts, while `-halt-on-error`
+stops compilation on an error. Standard TeX error messages allow latexmk to
+recognise and create auxiliary subdirectories required by `\include`.
 
-原手动重复调用 pdfLaTeX、BibTeX、makeindex 的脚本，以及大型通用 Makefile，
-改为调用 `latexmk -pdf`，由它按依赖自动运行所需步骤。
-`Variables.ini` 中 `THESIS`、`BUILD_DIR` 和 `LATEXMK` 分别设置主文件名、
-构建目录和命令名，Makefile 的 `-outdir` 将输出写入指定目录。
-清理命令改为 `latexmk -c`，仅清理辅助文件并保留生成的 PDF。
-Windows 脚本返回 latexmk 的退出码，不再先删除 PDF。
-`.gitignore` 排除编译产物、备份及本地工作文件，保留可提交的源文件和图像资源。
+`add_cus_dep('nlo', 'nls', 0, ...)` registers a makeindex rule for optional
+nomenclature support. `-s nomencl.ist` selects the nomenclature style, and
+`-o` specifies the output file.
+`$max_repeat = 10` allows up to ten LaTeX passes in a build so that included
+files, contents entries, and citation backlinks can settle during the first
+compilation. Latexmk stops recompiling once the files are stable.
+
+The scripts that manually repeated pdfLaTeX, BibTeX, and makeindex calls, along
+with the large general-purpose Makefile, were replaced with calls to
+`latexmk -pdf`. It runs the required steps automatically based on dependencies.
+In `Variables.ini`, `THESIS`, `BUILD_DIR`, and `LATEXMK` specify the main filename,
+build directory, and command name, respectively. The Makefile's `-outdir` option
+directs output to the selected directory.
+
+The clean command is now `latexmk -c`, which removes auxiliary files while
+retaining the generated PDF. The Windows script returns latexmk's exit code
+and no longer deletes the PDF before building.
+`.gitignore` excludes build output, backups, and local working files while
+allowing source files and image assets to be committed.

@@ -80,7 +80,7 @@ the project for `OOOO` and `placeholder` before submitting your thesis.
 
 ## Formatting and build notes
 
-The [formatting notes (in Chinese)](docs/formatting-notes.md) explain the commands
+The [formatting notes](docs/formatting-notes.md) explain the commands
 changed when preparing the template, their parameters, and their effects.
 The retained two-sided layout starts chapters on right-hand pages, so blank
 pages between short placeholder chapters are expected.
